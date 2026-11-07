@@ -1,0 +1,47 @@
+[
+  {
+    "id": "guitar-mate",
+    "name": "기타메이트",
+    "description": "기타 코드·운지 검색, 튜너, 코드 판별, 악보 코드 변환",
+    "url": "https://chehok.github.io/guitar-mate/",
+    "category": "음악",
+    "tags": ["기타", "코드", "튜너", "악보", "운지"],
+    "icon": "icons/guitar-mate/icon-512.png"
+  },
+  {
+    "id": "icebreaker",
+    "name": "Icebreaker",
+    "description": "모임 대화 주제, 밸런스 게임, 이 중 누가?",
+    "url": "https://chehok.github.io/icebreaker/",
+    "category": "모임",
+    "tags": ["대화", "밸런스게임", "아이스브레이커", "파티"],
+    "icon": "icons/icebreaker/icon-512.png"
+  },
+  {
+    "id": "mini-games",
+    "name": "미니게임",
+    "description": "1인 퍼즐·미니게임, 다인용 파티 게임",
+    "url": "https://chehok.github.io/mini-games/",
+    "category": "게임",
+    "tags": ["퍼즐", "파티게임", "미니게임", "멀티플레이"],
+    "icon": "icons/mini-games/icon-512.png"
+  },
+  {
+    "id": "spellchecker",
+    "name": "맞춤법 검사기",
+    "description": "한글 맞춤법 검사",
+    "url": "https://chehok.github.io/spellchecker/",
+    "category": "글쓰기",
+    "tags": ["맞춤법", "한글", "교정"],
+    "icon": null
+  },
+  {
+    "id": "instagram-manager",
+    "name": "Instagram Manager",
+    "description": "인스타그램 관리 도구",
+    "url": "https://chehok.github.io/instagram-manager/",
+    "category": "도구",
+    "tags": ["인스타그램", "SNS", "관리"],
+    "icon": "icons/instagram-manager/icon-192.png"
+  }
+]
