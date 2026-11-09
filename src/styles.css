@@ -157,8 +157,8 @@ body {
     display: block;
     position: relative;
     flex: none;
-    width: 220px;
-    height: 168px;
+    width: 280px;
+    height: 200px;
     margin-bottom: 0.25rem;
   }
   .hero__tile {
@@ -172,7 +172,8 @@ body {
   .hero__tile--0 { left: 0; top: 18px; }
   .hero__tile--1 { left: 100px; top: 0; }
   .hero__tile--2 { left: 38px; top: 92px; }
-  .hero__tile--3 { left: 140px; top: 80px; }
+  .hero__tile--3 { left: 128px; top: 86px; }
+  .hero__tile--4 { left: 196px; top: 34px; }
 }
 
 /* App list */

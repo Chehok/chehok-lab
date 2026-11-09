@@ -48,8 +48,8 @@ for (const app of apps) {
     }
   }
 
-  if (app.id === "spellchecker" && app.icon != null) {
-    errors.push("spellchecker must not have an icon (use text badge)");
+  if (app.id === "spellchecker" && !app.icon) {
+    errors.push("spellchecker must use the published app icon asset");
   }
 }
 

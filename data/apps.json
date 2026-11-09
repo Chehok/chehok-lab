@@ -29,8 +29,7 @@
     "description": "한글 맞춤법 검사",
     "url": "https://chehok.github.io/spellchecker/",
     "category": "글쓰기",
-    "icon": null,
-    "badge": "맞춤법"
+    "icon": "icons/spellchecker/apple-touch-icon.png"
   },
   {
     "id": "instagram-manager",
