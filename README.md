@@ -12,37 +12,39 @@ npm run dev
 
 브라우저에서 Vite가 안내하는 주소(기본 `http://localhost:5173/chehok-lab/`)로 접속합니다.
 
-## 앱 목록 추가·수정 방법
+## 앱 추가·수정 방법
 
-모든 앱 정보는 **한 파일**에만 있습니다: [`data/apps.json`](data/apps.json)
-
-각 항목 필드:
+모든 앱 정보는 **한 파일**, [`data/apps.json`](data/apps.json)에만 있습니다. 화면은 이 파일을 순서대로 그려서 만들어지므로, 새 앱은 항목 하나를 추가하면 끝입니다. (검색·분류 필터는 없고 모든 앱이 목록으로 보입니다.)
 
 | 필드 | 설명 |
 |------|------|
-| `id` | 영문 슬러그(고유, 변경 최소화) |
-| `name` | 카드에 보이는 이름 |
-| `description` | 한 줄 설명 |
-| `url` | 배포된 앱의 전체 URL (`https://` …) |
-| `category` | 필터 칩에 쓰는 분류(한글 가능) |
-| `tags` | 검색용 키워드 배열 |
-| `icon` | `public/` 기준 상대 경로. 아이콘이 없으면 `null`(텍스트 배지) |
+| `id` | 영문 슬러그(고유, 가급적 바꾸지 않기) |
+| `name` | 목록에 보이는 이름 |
+| `description` | 설명 (길이 제한 없음, 화면 너비에 맞춰 자연스럽게 줄바꿈) |
+| `url` | 배포된 앱의 전체 `https://` 주소 |
+| `category` | 데스크톱 목록 오른쪽에 보이는 분류 라벨 |
+| `icon` | `public/` 기준 상대 경로. 없으면 `null` |
+| `badge` | (선택) `icon`이 `null`일 때 아이콘 자리에 쓰는 짧은 글자 |
 
-### 아이콘을 쓸 때
+### 아이콘
 
-1. 해당 앱 사이트에 이미 있는 **홈 화면용 아이콘 원본**만 사용합니다(디자인·가공 금지).
-2. 파일을 `public/icons/<id>/` 아래에 저장합니다.
-3. `apps.json`의 `icon`을 예: `"icons/guitar-mate/icon-512.png"` 처럼 적습니다.
+1. 그 앱 사이트에 이미 있는 **홈 화면 아이콘 원본**만 받아 `public/icons/<id>/`에 그대로 저장합니다. 다시 그리거나 가공하지 않습니다.
+2. `icon`에 `"icons/<id>/icon-512.png"`처럼 적습니다.
+3. 원본 아이콘이 없는 앱은 `icon: null`과 `badge`를 쓰면 글자 배지로 표시됩니다.
 
-아이콘이 HTML/manifest에 없는 앱(예: 맞춤법 검사기)은 `icon: null`로 두면 UI가 **글자 배지**를 표시합니다. 임의 PNG를 만들지 마세요.
+## 파비콘·공유 썸네일
+
+- 허브 파비콘 원본: `public/favicon.svg`. 이를 바꾸거나 앱 목록(앞 5개 아이콘)이 바뀌면 `npm run brand`로 PNG/ICO 파비콘과 1200×630 공유 이미지(`public/og-chehok-lab-v1.png`)를 다시 만듭니다. (Playwright 크롬과 `scripts/og/fonts`의 Pretendard 글꼴 사용)
+- 공유 이미지는 각 앱의 원본 아이콘을 그대로 배치합니다.
+- 메타 태그(Open Graph/Twitter)는 `index.html`에 정적으로 들어 있습니다. 이미지를 바꿔 새 주소가 필요하면 `scripts/build-brand.mjs`의 `OG_FILE`과 `index.html`의 파일명(`-v1`)을 함께 올리세요. 이미 전송된 메신저 미리보기는 각 서비스의 캐시 정책에 따라 달라질 수 있습니다.
 
 ### 검증
 
 ```bash
-npm run validate   # URL·아이콘 파일·금지 URL 등
-npm test           # 데이터 단위 테스트
+npm run validate   # URL·아이콘 파일·금지 URL
+npm test           # 데이터·메타데이터·파비콘 단위 테스트
 npm run build      # GitHub Pages용 빌드 (base: /chehok-lab/)
-npm run test:e2e   # 검색/필터/링크·반응형 스크린샷
+npm run test:e2e   # 링크·경로·반응형(320~1440px) 점검과 스크린샷
 ```
 
 ## 배포
@@ -55,5 +57,5 @@ Pull Request에서는 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)만 
 ## 기술 스택
 
 - Vite 정적 빌드 (`base: /chehok-lab/`)
-- 바닐라 JS + CSS (모바일 우선)
+- 바닐라 JS + CSS (모바일 우선, 정적 렌더링)
 - Vitest · Playwright (CI 게이트)
