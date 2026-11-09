@@ -11,7 +11,7 @@
     "id": "icebreaker",
     "name": "Icebreaker",
     "description": "모임 대화 주제, 밸런스 게임, 이 중 누가?",
-    "url": "https://chehok.github.io/icebreaker/",
+    "url": "https://icebreaker.dev-chehok.workers.dev/",
     "category": "모임",
     "icon": "icons/icebreaker/icon-512.png"
   },
