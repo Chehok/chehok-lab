@@ -7,7 +7,7 @@ const root = resolve(__dirname, "..");
 const dataPath = resolve(root, "data/apps.json");
 
 const EXPECTED_URLS = new Set([
-  "https://chehok.github.io/guitar-mate/",
+  "https://guitar-mate.dev-chehok.workers.dev/",
   "https://chehok.github.io/icebreaker/",
   "https://chehok.github.io/mini-games/",
   "https://chehok.github.io/spellchecker/",
