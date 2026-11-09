@@ -23,20 +23,19 @@ npm run dev
 | `description` | 설명 (길이 제한 없음, 화면 너비에 맞춰 자연스럽게 줄바꿈) |
 | `url` | 배포된 앱의 전체 `https://` 주소 |
 | `category` | 데스크톱 목록 오른쪽에 보이는 분류 라벨 |
-| `icon` | `public/` 기준 상대 경로. 없으면 `null` |
-| `badge` | (선택) `icon`이 `null`일 때 아이콘 자리에 쓰는 짧은 글자 |
+| `icon` | `public/` 기준 상대 경로. 해당 앱 사이트에 공개된 원본 아이콘 파일 |
 
 ### 아이콘
 
 1. 그 앱 사이트에 이미 있는 **홈 화면 아이콘 원본**만 받아 `public/icons/<id>/`에 그대로 저장합니다. 다시 그리거나 가공하지 않습니다.
 2. `icon`에 `"icons/<id>/icon-512.png"`처럼 적습니다.
-3. 원본 아이콘이 없는 앱은 `icon: null`과 `badge`를 쓰면 글자 배지로 표시됩니다.
+3. 각 앱 사이트에 공개된 원본 아이콘만 사용합니다(임의 제작·가공 금지).
 
 ## 파비콘·공유 썸네일
 
-- 허브 파비콘 원본: `public/favicon.svg`. 이를 바꾸거나 앱 목록(앞 5개 아이콘)이 바뀌면 `npm run brand`로 PNG/ICO 파비콘과 1200×630 공유 이미지(`public/og-chehok-lab-v1.png`)를 다시 만듭니다. (Playwright 크롬과 `scripts/og/fonts`의 Pretendard 글꼴 사용)
+- 허브 파비콘 원본: `public/favicon.svg`. 이를 바꾸거나 앱 목록(앞 5개 아이콘)이 바뀌면 `npm run brand`로 PNG/ICO 파비콘과 1200×630 공유 이미지(`public/og-chehok-lab-v2.png` 등)를 다시 만듭니다. 공유 이미지 파일명 버전(`OG_FILE` in `scripts/build-brand.mjs`)과 `index.html`의 `og:image`·`twitter:image`를 함께 맞추세요. (Playwright 크롬과 `scripts/og/fonts`의 Pretendard 글꼴 사용)
 - 공유 이미지는 각 앱의 원본 아이콘을 그대로 배치합니다.
-- 메타 태그(Open Graph/Twitter)는 `index.html`에 정적으로 들어 있습니다. 이미지를 바꿔 새 주소가 필요하면 `scripts/build-brand.mjs`의 `OG_FILE`과 `index.html`의 파일명(`-v1`)을 함께 올리세요. 이미 전송된 메신저 미리보기는 각 서비스의 캐시 정책에 따라 달라질 수 있습니다.
+- 메타 태그(Open Graph/Twitter)는 `index.html`에 정적으로 들어 있습니다. 이미 전송된 메신저 미리보기는 각 서비스의 캐시 정책에 따라 달라질 수 있습니다.
 
 ### 검증
 

@@ -38,7 +38,8 @@ test.describe("Chehok Lab directory", () => {
       expect(res.status()).toBe(200);
       expect(res.headers()["content-type"]).toContain("image/png");
     }
-    await expect(page.locator(".app__icon--text")).toHaveText("맞춤법");
+    const scIcon = page.locator('a.app__link[href="https://chehok.github.io/spellchecker/"] img.app__icon');
+    await expect(scIcon).toHaveAttribute("src", /icons\/spellchecker\/apple-touch-icon\.png$/);
   });
 
   test("shows every app with no search or filter controls", async ({ page }) => {
@@ -88,7 +89,7 @@ test.describe("Chehok Lab directory", () => {
       expect(href.startsWith("/chehok-lab/")).toBe(true);
       expect((await request.get(href)).status()).toBe(200);
     }
-    const og = await request.get("/chehok-lab/og-chehok-lab-v1.png");
+    const og = await request.get("/chehok-lab/og-chehok-lab-v2.png");
     expect(og.status()).toBe(200);
     expect(og.headers()["content-type"]).toContain("image/png");
   });

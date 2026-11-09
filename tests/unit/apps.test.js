@@ -28,9 +28,10 @@ describe("apps.json", () => {
     }
   });
 
-  it("spellchecker has no icon", () => {
+  it("spellchecker uses the published apple-touch icon", () => {
     const sc = apps.find((a) => a.id === "spellchecker");
-    expect(sc?.icon).toBeNull();
+    expect(sc?.icon).toBe("icons/spellchecker/apple-touch-icon.png");
+    expect(existsSync(resolve(root, "public", sc.icon))).toBe(true);
   });
 
   it("icons exist on disk for apps that declare them", () => {
