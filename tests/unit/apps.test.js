@@ -6,9 +6,9 @@ const root = resolve(import.meta.dirname, "../..");
 const apps = JSON.parse(readFileSync(resolve(root, "data/apps.json"), "utf8"));
 
 const URLS = [
-  "https://guitar-mate.dev-chehok.workers.dev/",
-  "https://icebreaker.dev-chehok.workers.dev/",
-  "https://mini-games.dev-chehok.workers.dev/",
+  "https://guitar-mate.pages.dev/",
+  "https://icebreaker-de4.pages.dev/",
+  "https://mini-games-69o.pages.dev/",
   "https://chehok.github.io/spellchecker/",
 ];
 

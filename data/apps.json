@@ -3,7 +3,7 @@
     "id": "guitar-mate",
     "name": "기타메이트",
     "description": "기타 코드·운지 검색, 튜너, 코드 판별, 악보 코드 변환",
-    "url": "https://guitar-mate.dev-chehok.workers.dev/",
+    "url": "https://guitar-mate.pages.dev/",
     "category": "음악",
     "icon": "icons/guitar-mate/icon-512.png"
   },
@@ -11,7 +11,7 @@
     "id": "icebreaker",
     "name": "Icebreaker",
     "description": "모임 대화 주제, 밸런스 게임, 이 중 누가?",
-    "url": "https://icebreaker.dev-chehok.workers.dev/",
+    "url": "https://icebreaker-de4.pages.dev/",
     "category": "모임",
     "icon": "icons/icebreaker/icon-512.png"
   },
@@ -19,7 +19,7 @@
     "id": "mini-games",
     "name": "미니게임",
     "description": "1인 퍼즐·미니게임, 다인용 파티 게임",
-    "url": "https://mini-games.dev-chehok.workers.dev/",
+    "url": "https://mini-games-69o.pages.dev/",
     "category": "게임",
     "icon": "icons/mini-games/icon-512.png"
   },
