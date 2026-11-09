@@ -30,13 +30,5 @@
     "url": "https://chehok.github.io/spellchecker/",
     "category": "글쓰기",
     "icon": "icons/spellchecker/apple-touch-icon.png"
-  },
-  {
-    "id": "instagram-manager",
-    "name": "Instagram Manager",
-    "description": "인스타그램 관리 도구",
-    "url": "https://chehok.github.io/instagram-manager/",
-    "category": "도구",
-    "icon": "icons/instagram-manager/icon-192.png"
   }
 ]

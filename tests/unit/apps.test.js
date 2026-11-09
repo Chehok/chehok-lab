@@ -10,14 +10,13 @@ const URLS = [
   "https://icebreaker.dev-chehok.workers.dev/",
   "https://chehok.github.io/mini-games/",
   "https://chehok.github.io/spellchecker/",
-  "https://chehok.github.io/instagram-manager/",
 ];
 
 describe("apps.json", () => {
-  it("has exactly five entries with stable ids", () => {
-    expect(apps).toHaveLength(5);
+  it("has exactly four entries with stable ids", () => {
+    expect(apps).toHaveLength(4);
     const ids = apps.map((a) => a.id);
-    expect(new Set(ids).size).toBe(5);
+    expect(new Set(ids).size).toBe(4);
   });
 
   it("uses the verified public URLs only", () => {

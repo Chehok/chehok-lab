@@ -11,7 +11,6 @@ const EXPECTED_URLS = new Set([
   "https://icebreaker.dev-chehok.workers.dev/",
   "https://chehok.github.io/mini-games/",
   "https://chehok.github.io/spellchecker/",
-  "https://chehok.github.io/instagram-manager/",
 ]);
 
 const FORBIDDEN_URL = "guitar-chord";
