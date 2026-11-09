@@ -3,7 +3,7 @@
     "id": "guitar-mate",
     "name": "기타메이트",
     "description": "기타 코드·운지 검색, 튜너, 코드 판별, 악보 코드 변환",
-    "url": "https://chehok.github.io/guitar-mate/",
+    "url": "https://guitar-mate.dev-chehok.workers.dev/",
     "category": "음악",
     "icon": "icons/guitar-mate/icon-512.png"
   },
