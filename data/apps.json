@@ -16,6 +16,14 @@
     "icon": "icons/icebreaker/icon-512.png"
   },
   {
+    "id": "recreation",
+    "name": "레크리에이션",
+    "description": "모임용 스피드 퀴즈, 라이어 게임, OX 퀴즈와 팀 나누기·사다리·룰렛",
+    "url": "https://recreation-cmx.pages.dev/",
+    "category": "모임",
+    "icon": "icons/recreation/icon-512.png"
+  },
+  {
     "id": "mini-games",
     "name": "미니게임",
     "description": "1인 퍼즐·미니게임, 다인용 파티 게임",
@@ -30,13 +38,5 @@
     "url": "https://chehok.github.io/spellchecker/",
     "category": "글쓰기",
     "icon": "icons/spellchecker/apple-touch-icon.png"
-  },
-  {
-    "id": "recreation",
-    "name": "레크리에이션",
-    "description": "모임용 스피드 퀴즈, 라이어 게임, OX 퀴즈와 팀 나누기·사다리·룰렛",
-    "url": "https://recreation-cmx.pages.dev/",
-    "category": "모임",
-    "icon": "icons/recreation/icon-512.png"
   }
 ]
