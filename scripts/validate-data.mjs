@@ -11,6 +11,7 @@ const EXPECTED_URLS = new Set([
   "https://icebreaker-de4.pages.dev/",
   "https://mini-games-69o.pages.dev/",
   "https://chehok.github.io/spellchecker/",
+  "https://recreation-cmx.pages.dev/",
 ]);
 
 const FORBIDDEN_URL = "guitar-chord";

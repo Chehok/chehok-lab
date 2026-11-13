@@ -9,7 +9,7 @@ const pub = (p) => resolve(root, "public", p);
 const apps = JSON.parse(readFileSync(resolve(root, "data/apps.json"), "utf8"));
 const svg = readFileSync(pub("favicon.svg"), "utf8");
 
-export const OG_FILE = "og-chehok-lab-v2.png";
+export const OG_FILE = "og-chehok-lab-v3.png";
 
 function buildIco(pngs) {
   const header = Buffer.alloc(6);

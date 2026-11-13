@@ -76,7 +76,8 @@ test.describe("Chehok Lab directory", () => {
     const attr = (sel, a) => page.locator(sel).first().getAttribute(a);
     expect(await attr('link[rel="canonical"]', "href")).toBe("https://chehok.github.io/chehok-lab/");
     expect(await attr('meta[property="og:url"]', "content")).toBe("https://chehok.github.io/chehok-lab/");
-    expect(await attr('meta[property="og:image"]', "content")).toMatch(
+    const ogUrl = await attr('meta[property="og:image"]', "content");
+    expect(ogUrl).toMatch(
       /^https:\/\/chehok\.github\.io\/chehok-lab\/og-chehok-lab-v\d+\.png$/
     );
     expect(await attr('meta[name="twitter:card"]', "content")).toBe("summary_large_image");
@@ -89,7 +90,7 @@ test.describe("Chehok Lab directory", () => {
       expect(href.startsWith("/chehok-lab/")).toBe(true);
       expect((await request.get(href)).status()).toBe(200);
     }
-    const og = await request.get("/chehok-lab/og-chehok-lab-v2.png");
+    const og = await request.get(new URL(ogUrl).pathname);
     expect(og.status()).toBe(200);
     expect(og.headers()["content-type"]).toContain("image/png");
   });
