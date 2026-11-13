@@ -2,6 +2,12 @@ import apps from "../data/apps.json";
 import "./styles.css";
 
 const BASE = import.meta.env.BASE_URL;
+
+if (import.meta.env.PROD && "serviceWorker" in navigator) {
+  navigator.serviceWorker.register(`${BASE}sw.js`).catch((error) => {
+    console.warn("Chehok Lab service worker registration failed", error);
+  });
+}
 const MARK = `<svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#12352b"/><path d="M44.5 21.5A17 17 0 1 0 44.5 42.5" fill="none" stroke="#f4f1e8" stroke-width="8.5" stroke-linecap="round"/><circle cx="45" cy="32" r="5.2" fill="#c8f23d"/></svg>`;
 
 const esc = (s) =>

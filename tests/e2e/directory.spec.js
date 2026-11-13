@@ -105,6 +105,26 @@ test.describe("Chehok Lab directory", () => {
     expect(problems).toEqual([]);
   });
 
+  test("serves the install manifest and shows a message offline", async ({ page, context, request }) => {
+    await page.goto("./");
+    const manifest = await page.locator('link[rel="manifest"]').getAttribute("href");
+    expect(manifest).toBe("/chehok-lab/manifest.webmanifest");
+    const response = await request.get(manifest);
+    expect(response.ok()).toBe(true);
+    const config = await response.json();
+    expect(config).toMatchObject({ start_url: "./", scope: "./", display: "standalone" });
+    for (const icon of config.icons) {
+      const asset = await request.get(new URL(icon.src, response.url()).href);
+      expect(asset.ok()).toBe(true);
+      expect(asset.headers()["content-type"]).toContain("image/png");
+    }
+
+    await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+    await context.setOffline(true);
+    await page.reload();
+    await expect(page.getByRole("heading", { name: "인터넷에 연결해 주세요" })).toBeVisible();
+  });
+
   for (const width of [320, 390, 768, 1024, 1280, 1440]) {
     test(`no horizontal overflow at ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 800 });
