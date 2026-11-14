@@ -45,7 +45,9 @@ test.describe("Chehok Lab directory", () => {
   test("shows every app with no search or filter controls", async ({ page }) => {
     await page.goto("./");
     await expect(page.locator("a.app__link")).toHaveCount(apps.length);
-    await expect(page.locator('input, [role="search"], .chip, button')).toHaveCount(0);
+    await expect(page.locator('input, [role="search"], .chip')).toHaveCount(0);
+    await expect(page.locator("button")).toHaveCount(1);
+    await expect(page.locator("main button")).toHaveCount(0);
   });
 
   test("copy wraps naturally: no truncation, nowrap, or manual breaks", async ({ page }) => {
@@ -67,6 +69,8 @@ test.describe("Chehok Lab directory", () => {
     await page.goto("./");
     await page.keyboard.press("Tab");
     await expect(page.getByRole("link", { name: "앱 목록으로 건너뛰기" })).toBeFocused();
+    await page.keyboard.press("Tab");
+    await expect(page.getByRole("button", { name: /앱 설치/ })).toBeFocused();
     await page.keyboard.press("Tab");
     await expect(page.locator("a.app__link").first()).toBeFocused();
   });
@@ -124,6 +128,46 @@ test.describe("Chehok Lab directory", () => {
     await context.setOffline(true);
     await page.reload();
     await expect(page.getByRole("heading", { name: "인터넷에 연결해 주세요" })).toBeVisible();
+  });
+
+  test("browser shows 앱 설치 and triggers the install prompt", async ({ page }) => {
+    await page.goto("./");
+    const btn = page.locator("#pwa-action");
+    await expect(btn).toHaveText("앱 설치");
+    await expect(btn).toHaveAttribute("data-mode", "install");
+    await page.evaluate(() => {
+      const e = new Event("beforeinstallprompt", { cancelable: true });
+      e.prompt = () => { window.__prompted = true; };
+      e.userChoice = Promise.resolve({ outcome: "accepted" });
+      window.dispatchEvent(e);
+    });
+    await btn.click();
+    expect(await page.evaluate(() => window.__prompted)).toBe(true);
+  });
+
+  test("browser without install prompt shows install guidance", async ({ page }) => {
+    await page.goto("./");
+    await page.locator("#pwa-action").click();
+    await expect(page.locator("#pwa-hint")).toBeVisible();
+    await expect(page.locator("#pwa-hint")).toContainText("홈 화면에 추가");
+  });
+
+  test("installed app shows 링크 공유 and copies the link", async ({ page, context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.addInitScript(() => {
+      const real = window.matchMedia.bind(window);
+      window.matchMedia = (q) =>
+        q === "(display-mode: standalone)"
+          ? { matches: true, media: q, addEventListener() {}, removeEventListener() {} }
+          : real(q);
+    });
+    await page.goto("./");
+    const btn = page.locator("#pwa-action");
+    await expect(btn).toHaveText("링크 공유");
+    await expect(btn).toHaveAttribute("data-mode", "share");
+    await btn.click();
+    await expect(page.locator("#pwa-hint")).toHaveText("링크를 복사했어요.");
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("https://chehok.github.io/chehok-lab/");
   });
 
   for (const width of [320, 390, 768, 1024, 1280, 1440]) {
