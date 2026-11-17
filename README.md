@@ -31,6 +31,13 @@ npm run dev
 2. `icon`에 `"icons/<id>/icon-512.png"`처럼 적습니다.
 3. 각 앱 사이트에 공개된 원본 아이콘만 사용합니다(임의 제작·가공 금지).
 
+## PWA 설치·링크 공유 버튼
+
+헤더 오른쪽 버튼은 `src/pwa.js`에서 동작합니다.
+
+- **브라우저에서**: "앱 설치". 크롬·엣지 등 설치 프롬프트(`beforeinstallprompt`)를 지원하면 바로 설치 창을 띄우고, iOS Safari 등 지원하지 않는 브라우저에서는 "홈 화면에 추가" 안내 문구를 보여 줍니다.
+- **설치된 앱(standalone)에서**: "링크 공유". 누르면 `https://chehok.github.io/chehok-lab/`을 클립보드에 복사하고 "링크를 복사했어요."를 표시합니다.
+
 ## 파비콘·공유 썸네일
 
 - 허브 파비콘 원본: `public/favicon.svg`. 이를 바꾸거나 앱 목록(앞 5개 아이콘)이 바뀌면 `npm run brand`로 PNG/ICO 파비콘과 1200×630 공유 이미지(`public/og-chehok-lab-v2.png` 등)를 다시 만듭니다. 공유 이미지 파일명 버전(`OG_FILE` in `scripts/build-brand.mjs`)과 `index.html`의 `og:image`·`twitter:image`를 함께 맞추세요. (Playwright 크롬과 `scripts/og/fonts`의 Pretendard 글꼴 사용)

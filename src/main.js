@@ -1,5 +1,6 @@
 import apps from "../data/apps.json";
 import "./styles.css";
+import { setupPwaAction } from "./pwa.js";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -52,7 +53,11 @@ const heroIcons = apps
 document.getElementById("app").innerHTML = `
   <header class="hero">
     <div class="hero__inner">
-      <p class="hero__brand">${MARK}<span>Chehok Lab</span></p>
+      <div class="hero__top">
+        <p class="hero__brand">${MARK}<span>Chehok Lab</span></p>
+        <button type="button" class="pwa-btn" id="pwa-action"></button>
+      </div>
+      <p class="pwa-hint" id="pwa-hint" role="status" aria-live="polite"></p>
       <div class="hero__row">
         <div class="hero__text">
           <h1 class="hero__title"><span class="visually-hidden">Chehok Lab — </span>직접 만든 앱과 <em>실험</em>을 한곳에</h1>
@@ -73,3 +78,5 @@ document.getElementById("app").innerHTML = `
     <span>앱은 새 탭에서 열려요</span>
   </footer>
 `;
+
+setupPwaAction(document.getElementById("pwa-action"), document.getElementById("pwa-hint"));
